@@ -1,12 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BuyStuff.Data;
+using BuyStuff.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BuyStuff.Controllers
 {
     public class CategoryController : Controller
     {
+        private readonly ApplicationDbContext _db;
+        public CategoryController(ApplicationDbContext db) 
+        { 
+            _db = db;
+        } 
         public IActionResult Index()
         {
-            return View();
+            List<Category> objCategoryList = _db.Categories.ToList();
+            return View(objCategoryList);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace BuyStuff.Models
         [Key]
         public int ID { get; set; }
         [Required]
-        public int Name { get; set; }
+        public string Name { get; set; }
         public int DisplayOrder { get; set; }
     }
 }
