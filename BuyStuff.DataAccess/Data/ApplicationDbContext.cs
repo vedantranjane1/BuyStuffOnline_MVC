@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using BuyStuffOnline.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace BuyStuffOnline.DataAccess.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext
     {
 
 
@@ -19,6 +20,7 @@ namespace BuyStuffOnline.DataAccess.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Category>().HasData(
                 new Category { ID = 1, Name = "Action", DisplayOrder = 1 },
                 new Category { ID = 2, Name = "SciFi", DisplayOrder = 2 },
