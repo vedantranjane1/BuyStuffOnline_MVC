@@ -1,0 +1,17 @@
+﻿@if (TempData["success"] != null)
+{
+        <script src="~/lib/jquery/dist/jquery.js"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
+        <script type="text/javascript">
+            toastr["success"]("My name is Inigo Montoya. You killed my father. Prepare to die!")
+        </script>
+    
+}
+@if (TempData["error"] != null)
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
+    <script type="text/javascript">
+        toastr.error('@TempData["error"]');
+    </script>
+}

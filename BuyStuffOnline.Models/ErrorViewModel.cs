@@ -1,4 +1,4 @@
-namespace BuyStuff.Models
+namespace BuyStuffOnline.Models
 {
     public class ErrorViewModel
     {

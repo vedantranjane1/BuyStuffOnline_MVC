@@ -1,0 +1,73 @@
+﻿@model Product
+
+<form method="post">
+
+    <input asp-for="ID" hidden />
+    <div class="border p-3 mt-4 border-2 border-black">
+        <div class="row mb-2">
+            <h2 class="text-white">Delete Product</h2>
+        </div>
+        <div asp-validation-summary="None"></div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Author"></label>
+            <input asp-for="Author" disabled type="text" class="form-control" /> @* Data is retrieved from the model using asp-for tag helper*@
+            <span asp-validation-for="Author" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Price"></label>
+            <input asp-for="Price" disabled class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="ISBN"></label>
+            <input asp-for="ISBN" disabled type="text" class="form-control" /> @* Data is retrieved from the model using asp-for tag helper*@
+            <span asp-validation-for="ISBN" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Price50"></label>
+            <input asp-for="Price50" disabled class="form-control" />
+            <span asp-validation-for="Price50" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="ListPrice"></label>
+            <input asp-for="ListPrice" disabled type="text" class="form-control" /> @* Data is retrieved from the model using asp-for tag helper*@
+            <span asp-validation-for="ListPrice" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3 row p-1">
+            <label asp-for="Title"></label>
+            <input asp-for="Title" disabled type="text" class="form-control" /> @* Data is retrieved from the model using asp-for tag helper*@
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Description"></label>
+            <input asp-for="Description" disabled class=" form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <button type="button" onclick="DeleteConfirmation(@Model.ID)" class="btn btn-primary form-control" asp-route-id="@Model.ID">Delete</button>
+            </div>
+            <div class="col-6 col-md-3">
+                <a asp-controller="Product" asp-action="Index" class="btn btn-outline-secondary form-control text-black">
+                    Back
+                </a>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+</form>
+
+
+
+@section Scripts
+{
+
+    <script src="~/js/product.js"></script>
+
+}

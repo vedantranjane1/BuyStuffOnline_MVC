@@ -4,7 +4,7 @@
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace BuyStuff.Migrations
+namespace BuyStuffOnline.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class ChangeNameColumnToString_AddRowToCategoryTable : Migration

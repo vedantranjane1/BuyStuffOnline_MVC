@@ -1,0 +1,65 @@
+﻿@model List<Product>
+<div class="card border-0 shadow border-black">
+    <div class="card-header bg-secondary bg-gradient text-center mb-3">
+        <h2 class="text-white">
+            Product List
+        </h2>
+    </div>
+    <div class="text-end me-4">
+        <a asp-controller="Product" asp-action="UpSert" class="btn btn-primary text-light bg-black">
+            <i class="bi bi-plus-square">Create New Product</i>
+        </a>
+    </div>
+    <div class="border border-1 border-black m-5 p-4 rounded-3">
+        <table class="table  table-bordered table-striped"  id="TableData">
+            <thead>
+                <tr>
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        Author
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        ISBN
+                    </th>
+                    <th>
+                        Category
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            @* <tbody>
+                @if (Model == null)
+                    return;
+                @foreach (var obj in Model)
+                {
+                    <tr>
+                        <td>@obj.Author</td>
+                        <td>@obj.Price</td>
+                        <td>@obj.ISBN</td>
+                        <td>@obj.Category.Name</td>
+                        <td>
+                            <a asp-controller="Product" asp-action="UpSert" class="btn" asp-route-Id="@obj.ID">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <a asp-controller="Product" asp-action="Delete" class="btn btn-danger" asp-route-Id="@obj.ID">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody> *@
+        </table>
+    </div>
+</div>
+
+@section Scripts
+{
+
+    <script src="~/js/product.js"></script>
+     
+}
