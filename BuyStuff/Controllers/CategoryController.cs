@@ -1,9 +1,12 @@
 ﻿using BuyStuffOnline.DataAccess.Data;
 using BuyStuffOnline.DataAccess.Repository.IRepository;
+using BuyStuffOnline.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuyStuffOnline.Models
 {
+    [Authorize(Roles = StaticDetails.Role_Admin)]
     public class CategoryController : Controller
     {
         private readonly ICategoryRepository _categoryRepo;

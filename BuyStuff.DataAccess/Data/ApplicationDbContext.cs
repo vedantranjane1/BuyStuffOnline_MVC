@@ -1,13 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using BuyStuffOnline.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace BuyStuffOnline.DataAccess.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser> //<IdentityUser> is the default user and it is not required, you can skip adding it here and just write IdentityDbContext
     {
-
-
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -18,6 +17,9 @@ namespace BuyStuffOnline.DataAccess.Data
 
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<Company> Companies { get; set; }
+
+        public DbSet<ApplicationUser> applicationUsers { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

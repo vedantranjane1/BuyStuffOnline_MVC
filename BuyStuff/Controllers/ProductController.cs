@@ -5,9 +5,12 @@ using BuyStuffOnline.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using BuyStuffOnline.Models.ViewModels;
 using System.Runtime.Serialization.Formatters;
+using Microsoft.AspNetCore.Authorization;
+using BuyStuffOnline.Utility;
 
 namespace BuyStuff.Controllers
 {
+    [Authorize (Roles = StaticDetails.Role_Admin)]
     public class ProductController : Controller
     {
         private readonly IProductRepository _productRepo;
