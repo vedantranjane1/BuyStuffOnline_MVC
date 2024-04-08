@@ -25,9 +25,9 @@ namespace BuyStuff.Controllers
 
         public IActionResult Index()
          {
-            List<Product> objProductList = _productRepo.GetAll(includeProperties: "Category").ToList();
-            GetAll();
-            return View(objProductList);
+            //List<Product> objProductList = _productRepo.GetAll(includeProperties: "Category").ToList();
+            //GetAll();
+            return View();
         }
 
 

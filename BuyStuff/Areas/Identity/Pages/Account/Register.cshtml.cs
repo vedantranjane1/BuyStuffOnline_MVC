@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
+using BuyStuffOnline.DataAccess.Repository.IRepository;
 using BuyStuffOnline.Models;
 using BuyStuffOnline.Utility;
 using Microsoft.AspNetCore.Authentication;
@@ -35,6 +36,7 @@ namespace BuyStuff.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly ICompanyRepository _companyRepo;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
@@ -42,7 +44,7 @@ namespace BuyStuff.Areas.Identity.Pages.Account
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<IdentityRole> roleManager,ICompanyRepository _db)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -51,6 +53,7 @@ namespace BuyStuff.Areas.Identity.Pages.Account
             _logger = logger;
             _emailSender = emailSender;
             _roleManager = roleManager;
+            _companyRepo = _db;
         }
 
         /// <summary>
@@ -107,8 +110,11 @@ namespace BuyStuff.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
 
             public string? Role { get; set; }
+            public int? CompanyID { get; set; }
             [ValidateNever]
             public IEnumerable<SelectListItem> RoleList { get; set; }
+            [ValidateNever]
+            public IEnumerable<SelectListItem> companyList { get; set; }
 
             [Required]
             public string Name { get; set; }
@@ -132,9 +138,13 @@ namespace BuyStuff.Areas.Identity.Pages.Account
             }
             Input = new()
             {
-                RoleList = _roleManager.Roles.Select(x => x.Name).Select(i=> new SelectListItem{
-                Text= i,
-                Value= i
+                RoleList = _roleManager.Roles.Select(x => x.Name).Select(i => new SelectListItem {
+                    Text = i,
+                    Value = i
+                }),
+                companyList = _companyRepo.GetAll().Select(x => new SelectListItem {
+                    Text = x.Name,
+                    Value = x.Id.ToString()
                 })
             };
             ReturnUrl = returnUrl;
@@ -156,6 +166,11 @@ namespace BuyStuff.Areas.Identity.Pages.Account
                 user.City = Input.City;
                 user.PostalCode = Input.PostalCode;
                 user.State = Input.State;
+                if (Input.Role == StaticDetails.Role_Company) 
+                {
+                    user.CompanyID = Input.CompanyID;
+                }
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
 

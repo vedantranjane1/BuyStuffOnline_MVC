@@ -1,4 +1,4 @@
-﻿$(company).ready(function () {
+﻿$(document).ready(function () {
     loadCompanyTable();
 });
 
@@ -9,16 +9,16 @@ function loadCompanyTable() {
     companyTable = $('#CompanyData').DataTable({
         ajax: '/Company/getall',
         columns: [
-            { data: 'Name', "width": "25%" },
-            { data: 'StreetAddress', "width": "20%" },
-            { data: 'City', "width": "15%" },
-            { data: 'PostalCode', "width": "15%" },
-            { data: 'Phone', "width": "10%" },
+            { data: 'name', "width": "25%" },
+            { data: 'streetAddress', "width": "20%" },
+            { data: 'city', "width": "15%" },
+            { data: 'postalCode', "width": "15%" },
+            { data: 'phone', "width": "10%" },
             {
                 data: 'id',
                 "render": function (data) {
                     return `<div class="btn-group" role="group">
-                                <a href="/company123/upsert?id=${data}"  class="btn "><i class="bi bi-pencil-square"></i> </a >
+                                <a href="/company/upsert?id=${data}"  class="btn "><i class="bi bi-pencil-square"></i> </a >
                             </div>
                             <div class="btn-group" role="group">
                                 <a onclick=DeleteConfirmation('/company/deletepost?id=${data}') class="btn btn-danger"><i class="bi bi-trash"></i> </a >
@@ -56,7 +56,7 @@ function DeleteConfirmation(DeleteUrl) {
                             icon: "success",
                         });
 
-                        dataTable.ajax.reload();
+                        companyTable.ajax.reload();
                     }
 
                     else {

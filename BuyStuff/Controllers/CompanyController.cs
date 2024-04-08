@@ -134,7 +134,9 @@ namespace BuyStuff.Controllers
             if (_objCompany == null) 
             {
                 return Json(new { success = false, message =  "Error while deleting"});
-            }            
+            }
+            _CompanyRepo.Remove(_objCompany);
+            _CompanyRepo.Save();
             return Json(new { success = true, message = "Company Deleted" });
             //return RedirectToAction("Index");
         }

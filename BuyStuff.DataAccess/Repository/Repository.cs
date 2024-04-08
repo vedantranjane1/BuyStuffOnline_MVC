@@ -22,9 +22,18 @@ namespace BuyStuffOnline.DataAccess.Repository
             dbset.Add(entity);
         }
 
-        public T Get(Expression<Func<T, bool>> filter, string? includeProperties)
+        public T Get(Expression<Func<T, bool>> filter, string? includeProperties, bool tracked = false)
         {
-            IQueryable<T> query = dbset;
+            IQueryable<T> query;
+            if (tracked)
+            {
+                query = dbset;
+            }
+            else 
+            {
+                query = dbset.AsNoTracking();
+            }
+
             query = query.Where(filter);
             if (!string.IsNullOrEmpty(includeProperties))
             {
@@ -38,9 +47,14 @@ namespace BuyStuffOnline.DataAccess.Repository
         }
 
         //Category,Cover
-        public IEnumerable<T> GetAll(string? includeProperties=null)
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter = null, string? includeProperties=null)
         {
             IQueryable<T> query = dbset;
+
+            if(filter!=null)
+                query = query.Where(filter);
+
+
             if (!string.IsNullOrEmpty(includeProperties)) 
             {
                 foreach (string includeProp in includeProperties.Split(',',StringSplitOptions.RemoveEmptyEntries)) 

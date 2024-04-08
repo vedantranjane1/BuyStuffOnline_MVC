@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BuyStuff.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.1/css/dataTables.dataTables.min.css" />
     
 </head>
@@ -51,6 +51,11 @@
                                 </ul>
                             </li>
                         }
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Cart" asp-action="Index">
+                                <i class="bi bi-cart4">(0)</i>
+                            </a>
+                        </li>
                     </ul>
                     <partial name="_LoginPartial"/>
                 </div>
