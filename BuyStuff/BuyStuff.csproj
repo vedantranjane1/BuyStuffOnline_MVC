@@ -19,6 +19,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.1" />
     <PackageReference Include="MySql.Data" Version="8.3.0" />
+    <PackageReference Include="Stripe.net" Version="44.4.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -10,6 +10,7 @@ namespace BuyStuffOnline.Models.ViewModels
     {
         public IEnumerable<ShoppingCart> CartList {  get; set; }
         
-        public decimal OrderTotal { get; set; }
+        public OrderHeader OrderHeader { get; set; }
+
     }
 }
