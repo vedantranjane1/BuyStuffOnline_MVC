@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BuyStuffOnline.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240428073715_AddedSessionIdToOrderHeader")]
+    [Migration("20240501085152_AddedSessionIdToOrderHeader")]
     partial class AddedSessionIdToOrderHeader
     {
         /// <inheritdoc />

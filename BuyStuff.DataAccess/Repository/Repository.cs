@@ -72,7 +72,7 @@ namespace BuyStuffOnline.DataAccess.Repository
             dbset.Remove(entity);
         }
 
-        public void RemoveRange(T entity)
+        public void RemoveRange(List<T> entity)
         {
             dbset.RemoveRange(entity);
         }
